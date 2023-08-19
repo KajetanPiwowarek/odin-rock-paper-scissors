@@ -20,53 +20,54 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
   console.log("Player choice: " + playerSelection);
   console.log("Computer choice: " + computerSelection);
-  if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
+  if (playerSelection == "rock" && computerSelection == "rock") {
     console.log("It's a Tie! Rock against Rock");
   } else if (
-    playerSelection.toLowerCase() == "rock" &&
+    playerSelection == "rock" &&
     computerSelection == "paper"
   ) {
     console.log("You Lose! Paper beats Rock");
     computerPoints++;
   } else if (
-    playerSelection.toLowerCase() == "rock" &&
+    playerSelection == "rock" &&
     computerSelection == "scissors"
   ) {
     console.log("You Win! Rock beats Scissors");
     playerPoints++;
   } else if (
-    playerSelection.toLowerCase() == "paper" &&
+    playerSelection == "paper" &&
     computerSelection == "rock"
   ) {
     console.log("You Win! Paper beats Rock");
     playerPoints++;
   } else if (
-    playerSelection.toLowerCase() == "paper" &&
+    playerSelection == "paper" &&
     computerSelection == "paper"
   ) {
     console.log("It's a Tie! Paper against Paper");
   } else if (
-    playerSelection.toLowerCase() == "paper" &&
+    playerSelection == "paper" &&
     computerSelection == "scissors"
   ) {
     console.log("You Lose! Scissors beats Paper");
     computerPoints++;
   } else if (
-    playerSelection.toLowerCase() == "scissors" &&
+    playerSelection == "scissors" &&
     computerSelection == "rock"
   ) {
     console.log("You Lose! Rock beats Scissors");
     computerPoints++;
   } else if (
-    playerSelection.toLowerCase() == "scissors" &&
+    playerSelection == "scissors" &&
     computerSelection == "paper"
   ) {
     console.log("You Win! Scissors beats Paper");
     playerPoints++;
   } else if (
-    playerSelection.toLowerCase() == "scissors" &&
+    playerSelection == "scissors" &&
     computerSelection == "scissors"
   ) {
     console.log("It's a Tie! Scissors against Scissors");
