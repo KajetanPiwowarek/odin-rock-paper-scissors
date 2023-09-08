@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    background-color: #F0F0F0;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    font-size: 64px;
+    font-weight: bold;
+    color: #213555;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-board {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    color: #213555;
+}
+
+h2 {
+    margin: 32px;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    color: #E5D283;
+}
+
+.colon {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    color: #4F709C;
+}
+
+.img-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 32px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+.image-text {
+    font-size: 28px;
+    color: #4F709C;
+}
+
+.fight-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: 28px;
+    color: #213555;
+    border: 3px solid #4F709C;
+    width: 600px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 48px;
+}
+
+.btn-reset {
+    font-size: 32px;
+    background-color: white;
+    color: #213555;
+    border-radius: 12px;
+    border: 3px solid #4F709C;
+    margin-top: 16px;
+}

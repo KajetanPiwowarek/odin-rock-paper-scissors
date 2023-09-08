@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <script src="game.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <script src="game.js"></script>
+    <h1 class="title">Rock Paper Scissors</h1>
+    <div id="container" class="container">
+    <div class="score-board">
+        <h2 class="player">[Player]</h2>
+        <div class="score">
+            <h2 id="player-score">0</h2>
+            <h2 class="colon">:</h2>
+            <h2 id="computer-score">0</h2>
+        </div>
+        <h2 class="computer">[Computer]</h2>
+    </div>
+    <h3>Choose your fighter!</h3>
+    <div class="img-btn">
+        <div class="image-info">
+            <button id="btn-rock"><img src="./images/rock.png" alt="Rock"></button>
+            <p class="image-text">Rock</p>
+        </div>
+        <div class="image-info">
+            <button id="btn-paper"><img src="./images/paper.png" alt="Paper"></button>
+            <p class="image-text">Paper</p>
+        </div>
+        <div class="image-info">
+            <button id="btn-scissors"><img src="./images/scissors.png" alt="Scissors"></button>
+            <p class="image-text">Scissors</p>
+        </div>   
+    </div>
+    <div id="fight-info" class="fight-info">...</div> 
+    <div id="result" class="result"></div>
+    <button id="btn-reset" class="btn-reset">Reset Game</button>
+</div> 
 </body>
 </html>

@@ -3,6 +3,76 @@ let computerPoints = 0;
 let playerSelection = "";
 let playerPoints = 0;
 
+const btnRock = document.querySelector("#btn-rock");
+const btnPaper = document.querySelector("#btn-paper");
+const btnScissors = document.querySelector("#btn-scissors");
+
+const playerScore = document.querySelector('#player-score');
+const computerScore = document.querySelector('#computer-score');
+
+const fightInfo = document.querySelector('#fight-info');
+const result = document.querySelector('#result');
+
+const btnReset = document.querySelector('#btn-reset');
+btnReset.disabled = true;
+
+function playRound(playerSelection) {
+  computerSelection = getComputerChoice();
+  fightInfo.innerHTML += `<div>Computer chose ${computerSelection}!</div>`;
+  playerSelection = playerSelection.toLowerCase();
+
+  if (playerSelection == "rock" && computerSelection == "rock") {
+    fightInfo.innerHTML += `<div>It's a Tie! Rock against Rock!</div>`;
+  } else if (playerSelection == "rock" && computerSelection == "paper") {
+    fightInfo.innerHTML += `<div>You Lose! Paper beats Rock!</div>`;
+    computerPoints++;
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    fightInfo.innerHTML += `<div>You Win! Rock beats Scissors!</div>`;
+    playerPoints++;
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    fightInfo.innerHTML += `<div>You Win! Paper beats Rock!</div>`;
+    playerPoints++;
+  } else if (playerSelection == "paper" && computerSelection == "paper") {
+    fightInfo.innerHTML += `<div>It's a Tie! Paper against Paper!</div>`;
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    fightInfo.innerHTML += `<div>You Lose! Scissors beats Paper!</div>`;
+    computerPoints++;
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    fightInfo.innerHTML += `<div>You Lose! Rock beats Scissors!</div>`;
+    computerPoints++;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    fightInfo.innerHTML += `<div>You Win! Scissors beats Paper!</div>`;
+    playerPoints++;
+  } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+    fightInfo.innerHTML += `<div>It's a Tie! Scissors against Scissors!</div>`;
+  }
+
+  playerScore.textContent = `${playerPoints}`;
+  computerScore.textContent = `${computerPoints}`
+
+  if (playerPoints == 3) {
+    result.style.cssText = "color: green;";
+    result.textContent = `You're the Winner! Congratulations!`;
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
+    btnReset.disabled = false;
+    btnReset.addEventListener("click", () => {
+      resetGame();
+    });
+  } else if (computerPoints == 3) {
+    result.style.cssText = "color: red;";
+    result.textContent = `You Lost.. Good luck next time.`;
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
+    btnReset.disabled = false;
+    btnReset.addEventListener("click", () => {
+      resetGame();
+    });
+  }
+}
+
 function getComputerChoice() {
   let random = Math.round(Math.random() * (3 - 1) + 1);
   switch (random) {
@@ -19,96 +89,34 @@ function getComputerChoice() {
   return computerSelection;
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-  console.log("Player choice: " + playerSelection);
-  console.log("Computer choice: " + computerSelection);
-  if (playerSelection == "rock" && computerSelection == "rock") {
-    console.log("It's a Tie! Rock against Rock");
-  } else if (
-    playerSelection == "rock" &&
-    computerSelection == "paper"
-  ) {
-    console.log("You Lose! Paper beats Rock");
-    computerPoints++;
-  } else if (
-    playerSelection == "rock" &&
-    computerSelection == "scissors"
-  ) {
-    console.log("You Win! Rock beats Scissors");
-    playerPoints++;
-  } else if (
-    playerSelection == "paper" &&
-    computerSelection == "rock"
-  ) {
-    console.log("You Win! Paper beats Rock");
-    playerPoints++;
-  } else if (
-    playerSelection == "paper" &&
-    computerSelection == "paper"
-  ) {
-    console.log("It's a Tie! Paper against Paper");
-  } else if (
-    playerSelection == "paper" &&
-    computerSelection == "scissors"
-  ) {
-    console.log("You Lose! Scissors beats Paper");
-    computerPoints++;
-  } else if (
-    playerSelection == "scissors" &&
-    computerSelection == "rock"
-  ) {
-    console.log("You Lose! Rock beats Scissors");
-    computerPoints++;
-  } else if (
-    playerSelection == "scissors" &&
-    computerSelection == "paper"
-  ) {
-    console.log("You Win! Scissors beats Paper");
-    playerPoints++;
-  } else if (
-    playerSelection == "scissors" &&
-    computerSelection == "scissors"
-  ) {
-    console.log("It's a Tie! Scissors against Scissors");
-  }
+function resetGame() {
+    playerPoints = 0;
+    computerPoints = 0;
+    btnRock.disabled = false;
+    btnPaper.disabled = false;
+    btnScissors.disabled = false;
+    result.textContent = ``;
+    fightInfo.textContent = '...';
+    playerScore.textContent = `0`;
+    computerScore.textContent = `0`
+    btnReset.disabled = true;
 }
 
-function game() {
-while (true) {
-    while (playerSelection == "") {
-      playerSelection = prompt(
-        "Please enter your choice (rock, paper or scissors):"
-      );
-    }
 
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    playerSelection = "";
-    computerSelection = "";
+btnRock.addEventListener("click", () => {
+  playerSelection = "rock";
+  fightInfo.textContent = 'Player chose Rock!';
+  playRound(playerSelection);
+});
 
-    console.log(`Score[Player:${playerPoints} - Computer:${computerPoints}]`);
+btnPaper.addEventListener("click", () => {
+  playerSelection = "paper";
+  fightInfo.textContent = 'Player chose Paper!';
+  playRound(playerSelection);
+});
 
-    if (playerPoints == 3) {
-      console.log("You're the Winner! Congratulations!");
-      break;
-    } else if (computerPoints == 3) {
-      console.log("You Lost.. Good luck next time.");
-      break;
-    }
-  }
-
-  let play = prompt("Do you want to play more? yes or no:");
-  while(play != "yes" && play != "no"){
-    play = prompt("Do you want to play more? yes or no:");
-    if (play.toLowerCase() == "yes") {
-        playerPoints = 0;
-        computerPoints = 0;
-        game();
-      } else if (play.toLowerCase() == "no"){
-        return;
-      }
-  }
-}
-
-game();
+btnScissors.addEventListener("click", () => {
+  playerSelection = "scissors";
+  fightInfo.textContent = 'Player chose Scissors!';
+  playRound(playerSelection);
+});
